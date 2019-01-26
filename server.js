@@ -15,12 +15,13 @@ const app = express();
 app.engine('handlebars', exhb({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
-app.use(express.static(path.join(__dirname, 'public')));
+// STATIC FOLDER
+app.use(express.static(path.join(__dirname, '/public')));
 
-app.get('/', (req, res) => {
-  res.send('Hello There!!!');
-});
+// INDEX ROUTE
+app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
 
+// GIG ROUTES
 app.use('/gigs', require('./routes/gigs'));
 
 const PORT = process.env.PORT || 5000;

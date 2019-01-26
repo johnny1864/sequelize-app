@@ -16,8 +16,11 @@ router.get('/', (req, res) => {
     .catch(err => console.log(err));
 });
 
+//DISPLAY ADD FORM
+router.get('add', (req, res) => res.render('add'));
+
 // ADD GIG TO DB
-router.get('/add', (req, res) => {
+router.post('/add', (req, res) => {
   const data = {
     title: 'Wordpress Developer',
     technologies: 'Wordpress, javascript, html, css',
