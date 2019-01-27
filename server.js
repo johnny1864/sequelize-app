@@ -15,6 +15,9 @@ const app = express();
 app.engine('handlebars', exhb({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
+// BODY PARSER
+app.use(bodyParser.urlencoded({ extended: false }));
+
 // STATIC FOLDER
 app.use(express.static(path.join(__dirname, '/public')));
 
@@ -23,6 +26,9 @@ app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
 
 // GIG ROUTES
 app.use('/gigs', require('./routes/gigs'));
+
+// ADD ROUTE
+app.get('/gigs/add', (req, res) => res.render('add'));
 
 const PORT = process.env.PORT || 5000;
 

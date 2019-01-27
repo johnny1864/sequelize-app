@@ -21,14 +21,7 @@ router.get('add', (req, res) => res.render('add'));
 
 // ADD GIG TO DB
 router.post('/add', (req, res) => {
-  const data = {
-    title: 'Wordpress Developer',
-    technologies: 'Wordpress, javascript, html, css',
-    budget: '$1000',
-    description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis commodo, nulla at tristique luctus, neque felis malesuada odio, quis tempus metus enim ac magna. Maecenas blandit imperdiet cursus. Ut porttitor augue quis urna congue mattis. Sed pulvinar orci sed fringilla condimentum. Nam faucibus vel lacus vel posuere. Curabitur erat leo, congue eu convallis quis, mollis sed nisl. Fusce nunc elit, egestas ac ligula nec, dignissim bibendum libero',
-    contact_email: 'user2@gmail.com'
-  };
+  let data = req.body;
 
   let { title, technologies, budget, description, contact_email } = data;
 
@@ -42,6 +35,9 @@ router.post('/add', (req, res) => {
   })
     .then(gig => res.redirect('/gigs'))
     .catch(err => console.log(err));
+
+  // REDIRECT TO HOME PAGE
+  res.redirect('/');
 });
 
 module.exports = router;
